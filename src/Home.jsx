@@ -1,11 +1,10 @@
-import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar";
-
+import Banner from './Banner';
+import TourismAndTravel from './TourismAndTravel';
 const Home = () => {
     return (
         <div>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
+            <Banner></Banner>
+            <TourismAndTravel></TourismAndTravel>
         </div>
     );
 };

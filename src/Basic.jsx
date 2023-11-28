@@ -1,13 +1,12 @@
-import Banner from "./Banner";
+import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
-import TourismAndTravel from "./TourismAndTravel";
 
 const Basic = () => {
     return (
         <div>
+            
             <Navbar></Navbar>
-            <Banner></Banner>
-            <TourismAndTravel></TourismAndTravel>
+            <Outlet></Outlet>
             
         </div>
     );
