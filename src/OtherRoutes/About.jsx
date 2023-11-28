@@ -1,4 +1,5 @@
 import { IoDiamondOutline } from "react-icons/io5";
+import Footer from "../Shared/Footer";
 const About = () => {
     return (
         <div>
@@ -38,6 +39,8 @@ const About = () => {
                 </div>
 
             </div>
+
+            <Footer></Footer>
         </div>
     ); 
 };
