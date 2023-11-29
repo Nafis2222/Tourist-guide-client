@@ -5,11 +5,15 @@ const TourismAndTravel = () => {
   const [all,setall] = useState()
 
   useEffect(()=>{
-    fetch('https://raw.githubusercontent.com/Nafis2222/watches/main/Assignment12')
+    fetch('http://localhost:5000/package')
     .then(res=>res.json())
     .then(data=>setall(data))
     
   },[])
+
+  const handleView = (id) =>{
+    console.log(id)
+  }
     return (
         <div>
              <Tabs>
@@ -34,19 +38,19 @@ const TourismAndTravel = () => {
                </div>
              </TabPanel>
              <TabPanel>
-              <div className='grid grid-cols-3'>
+              <div className='grid md:grid-cols-3'>
               {
                 all?.map(
                   every=>
                   <div key={every} className=''>
-                    <div className="card md:w-80 bg-base-100 shadow-xl">
-                    <figure><img className='md:w-80' src={every?.img} alt="Shoes" /></figure>
+                    <div className="card my-3 md:w-80 bg-base-100 shadow-xl">
+                    <figure><img className='md:w-80 h-40' src={every?.img} alt="Shoes" /></figure>
                     <div className="card-body">
                       <h2 className="card-title">{every?.tour_type}</h2>
                       <h2 className="card-title">{every?.tour_title}</h2>
                       <p>price : {every?.price}$</p>
                       <div className="card-actions justify-end">
-                        <button className="btn btn-primary">View Package</button>
+                        <button onClick={()=>handleView(every?._id)} className="btn btn-primary">View Package</button>
                       </div>
                     </div>
                   </div>
