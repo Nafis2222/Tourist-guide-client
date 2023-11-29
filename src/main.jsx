@@ -8,6 +8,7 @@ import './index.css'
 import Basic from './Basic';
 import About from './OtherRoutes/About';
 import Home from './Home';
+import PackageDetails from './PackageDetails';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,12 @@ const router = createBrowserRouter([
       {
         path: "/aboutUs",
         element: <About></About>
+      },
+      {
+        path: "/package/:details",
+        element: <PackageDetails></PackageDetails>
       }
+
     
      
     ]

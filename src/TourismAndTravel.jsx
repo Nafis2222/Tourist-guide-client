@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 const TourismAndTravel = () => {
@@ -50,7 +51,7 @@ const TourismAndTravel = () => {
                       <h2 className="card-title">{every?.tour_title}</h2>
                       <p>price : {every?.price}$</p>
                       <div className="card-actions justify-end">
-                        <button onClick={()=>handleView(every?._id)} className="btn btn-primary">View Package</button>
+                       <Link to={`/package/${every?._id}`}><button className='btn btn-info'>View Package</button></Link>
                       </div>
                     </div>
                   </div>
