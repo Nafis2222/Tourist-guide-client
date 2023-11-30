@@ -10,6 +10,7 @@ import About from './OtherRoutes/About';
 import Home from './Home';
 import PackageDetails from './PackageDetails';
 import AuthProvider from './AuthProvider';
+import Login from './Login';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/package/:details",
         element: <PackageDetails></PackageDetails>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
       }
 
     
