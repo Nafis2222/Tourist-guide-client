@@ -4,7 +4,7 @@ import { AuthContext } from "./AuthProvider";
 
 const Navbar = () => {
 
-  const {user, Logout} = useContext(AuthContext)
+  const {userFinal, LogOut} = useContext(AuthContext)
 
     const navLinks = <>
         <li><NavLink className="text-sm font-bold" to="/">Home</NavLink ></li>
@@ -14,8 +14,8 @@ const Navbar = () => {
         <li><NavLink className="text-sm font-bold" to="/contactUs">Contact us</NavLink ></li>
     </>
 
-const handleLogout = () =>{
-  Logout()
+const handleClick = () =>{
+  LogOut()
   .then(res =>{
       console.log(res.user)
   })
@@ -24,6 +24,7 @@ const handleLogout = () =>{
   })
 }
 
+console.log(userFinal?.photoURL)
 
 
     return (
@@ -48,16 +49,20 @@ const handleLogout = () =>{
     </ul>
   </div>
   <div className="navbar-end">
-          {
-                user ? <><img className='w-12 h-12 mr-1 rounded-full' src="https://i.ibb.co/L97LMXw/own-pic.jpg" alt="" />
-                <Link><button onClick={handleLogout} className='btn'>Sign out</button></Link></>
+  {
+                userFinal ? <>
+                <h1>{userFinal?.displayName}</h1>
+                <p>{userFinal?.email}</p>
+                <img className='w-12 h-12 mr-1 rounded-full' src={userFinal?.photoURL} alt="https://i.ibb.co/L97LMXw/own-pic.jpg" />
+                <Link><button onClick={handleClick} className='btn'>Sign out</button></Link>
+                </>
                 
                 : <>
                 <img className='w-12 mr-2 h-12' src="https://i.ibb.co/J50xnVF/user.png" alt="" />
                 <Link to="/login"><button className='btn'>Login</button></Link>
                 </>
 
-            }  
+            } 
             </div> 
 </div>
             

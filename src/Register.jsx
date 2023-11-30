@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Register = () => {
     const {createUser} = useContext(AuthContext)
     const [error,seterror] = useState('')
     const [mistake,setMistake] = useState()
     const [success,setsuccess] = useState('')
-    console.log(error)
     console.log(success)
     const handleRegister = e =>{
         e.preventDefault()

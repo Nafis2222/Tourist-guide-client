@@ -91,7 +91,7 @@ console.log(error)
       </form>
       <p className=" mb-3 text-center">Don't have account ?<Link to="/register" className="link link-accent">Register</Link></p>
       <h1 className="text-center mb-2 font-medium">Or,</h1>
-      <button onClick={handleGoogle} className=" btn btn-active hover:bg-green-600 mx-2">  Continue with Google</button>
+      <button onClick={handleGoogle} className=" btn btn-active hover:bg-green-600 mx-2">  Continue with Social</button>
     </div>
    
   </div>
