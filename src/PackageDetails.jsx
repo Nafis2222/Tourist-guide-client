@@ -10,12 +10,14 @@ const PackageDetails = () => {
     const [ourDetails,setOurDetails] = useState()
     const [pic,setPic] = useState()
     const [about,setAbout] = useState()
+    const [accordation, setAccordation] = useState()
     // console.log(details)
 
     axiosPublic.get(`http://localhost:5000/package/${details}`)
     .then(res=>{
       setPic(res.data?.details?.images)
       setAbout(res.data?.details?.about)
+      setAccordation(res.data?.details?.plan)
     })
     return (
         <div>
@@ -55,6 +57,28 @@ const PackageDetails = () => {
                     </div>
                 </div>)
             }
+           </div>
+           <h1 className="text-center text-4xl font-light mt-5">Tour plan</h1>
+           <p className="text-center text-xl mt-2 mb-4">Our plan is given below</p>
+           <div>
+            {
+                accordation?.map(one=>
+                    <div key={one?._id} className="collapse collapse-arrow bg-base-200">
+                      <input type="radio" name="my-accordion-2"  /> 
+                      <div className="collapse-title text-xl font-medium">
+                      <button className="btn btn-info rounded-r-badge btn-sm mx-3">Day : {one?.day}</button>
+                        {one?.title}
+                      </div>
+                      <div className="collapse-content"> 
+                        <p>
+                            {one?.description}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    )
+            }
+
            </div>
             
         </div>
