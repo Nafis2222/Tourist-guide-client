@@ -4,7 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 const TourismAndTravel = () => {
   const [all,setall] = useState()
-
+// http://localhost:5000/package
   useEffect(()=>{
     fetch('http://localhost:5000/package')
     .then(res=>res.json())
