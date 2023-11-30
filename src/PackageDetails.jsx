@@ -21,7 +21,7 @@ const PackageDetails = () => {
       setAccordation(res.data?.details?.plan)
       setList(res.data)
     //   res.data?.details?.tour_guide
-      console.log(list)
+    //   console.log(list)
     })
     return (
         <div>
@@ -89,7 +89,7 @@ const PackageDetails = () => {
            <div class="dropdown dropdown-bottom md:mx-96 items-center">
               <div tabindex="0" role="button" class="btn m-1">Tour-Guide Officer</div>
               <ul class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                <li className="w-full  "><Link>
+                <li className="w-full  "><Link to={`/package/${list?.details?.tour_guide?.name}`}>
                   <div>
                     <img className="w-24 h-24 rounded-full mx-auto" src={list?.details?.tour_guide?.profile_pic} alt="" />
                     <div className="text-center">
