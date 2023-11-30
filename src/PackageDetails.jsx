@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import UseAxiosPublic from "./Hooks/UseAxiosPublic";
 import { useState } from "react";
 import { GoMirror } from "react-icons/go";
@@ -11,6 +11,7 @@ const PackageDetails = () => {
     const [pic,setPic] = useState()
     const [about,setAbout] = useState()
     const [accordation, setAccordation] = useState()
+    const [list,setList] = useState()
     // console.log(details)
 
     axiosPublic.get(`http://localhost:5000/package/${details}`)
@@ -18,6 +19,9 @@ const PackageDetails = () => {
       setPic(res.data?.details?.images)
       setAbout(res.data?.details?.about)
       setAccordation(res.data?.details?.plan)
+      setList(res.data)
+    //   res.data?.details?.tour_guide
+      console.log(list)
     })
     return (
         <div>
@@ -80,6 +84,25 @@ const PackageDetails = () => {
             }
 
            </div>
+
+           <div>
+           <div class="dropdown dropdown-bottom md:mx-96 items-center">
+              <div tabindex="0" role="button" class="btn m-1">Tour-Guide Officer</div>
+              <ul class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                <li className="w-full  "><Link>
+                  <div>
+                    <img className="w-24 h-24 rounded-full mx-auto" src={list?.details?.tour_guide?.profile_pic} alt="" />
+                    <div className="text-center">
+                        <h1 className="font-bold">{list?.details?.tour_guide?.name}</h1>
+                        <p>{list?.details?.tour_guide?.education}</p>
+                    </div>
+                  </div>
+                </Link></li>
+              </ul>
+            </div>
+             
+           </div>
+           
             
         </div>
     );
