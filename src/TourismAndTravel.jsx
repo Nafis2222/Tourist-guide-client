@@ -6,7 +6,7 @@ const TourismAndTravel = () => {
   const [all,setall] = useState()
 // http://localhost:5000/package
   useEffect(()=>{
-    fetch('http://localhost:5000/package')
+    fetch('https://tourisst.vercel.app/package')
     .then(res=>res.json())
     .then(data=>setall(data))
     
@@ -58,6 +58,65 @@ const TourismAndTravel = () => {
                   </div>
                   )
               }
+              </div>
+             </TabPanel>
+             <TabPanel>
+              <div>
+                <h1 className="text-3xl my-7 font-bold text-center">Our Tour Guide List is shown Below</h1>
+                <div>
+                <div className="overflow-x-auto mb-10">
+  <table className="table">
+    {/* head */}
+    <thead>
+      <tr>
+        
+        <th> Name</th>
+        <th>Contacts</th>
+        <th>Skills</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        all?.map(just=>
+          <tr key={just?._id}>
+        
+        <td>
+          <div className="flex items-center gap-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src={just?.details?.tour_guide?.profile_pic} alt="Avatar Tailwind CSS Component" />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">{just?.details?.tour_guide?.name}</div>
+              <div className="text-sm opacity-50">{just?.details?.tour_guide?.education}</div>
+            </div>
+          </div>
+        </td>
+        <td>
+          {just?.details?.tour_guide?.contact_details?.email}
+          <br/>
+          <span className="badge badge-ghost badge-sm">{just?.details?.tour_guide?.contact_details?.phone}
+</span>
+        </td>
+        <td>{just?.details?.tour_guide?.skills}</td>
+        <th>
+          <Link to={`/guideDetails/${just?._id}`}><button  className="btn btn-ghost btn-xs">details</button>
+</Link>
+        </th>
+      </tr>
+          )
+      }      
+   
+      
+     
+    </tbody>
+   
+    
+  </table>
+</div>
+                </div>
               </div>
              </TabPanel>
              </Tabs>

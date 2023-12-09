@@ -8,10 +8,9 @@ const Navbar = () => {
 
     const navLinks = <>
         <li><NavLink className="text-sm font-bold" to="/">Home</NavLink ></li>
-        <li><NavLink className="text-sm font-bold" to="/">Community</NavLink ></li>
-        <li><NavLink className="text-sm font-bold" to="/">Blogs</NavLink ></li>
+        <li><NavLink className="text-sm font-bold" to="/blogs">Community</NavLink ></li>
         <li><NavLink className="text-sm font-bold" to="/aboutUs">About Us</NavLink ></li>
-        <li><NavLink className="text-sm font-bold" to="/contactUs">Contact us</NavLink ></li>
+        {/* <li><NavLink className="text-sm font-bold" to="/contactUs">Contact us</NavLink ></li> */}
     </>
 
 const handleClick = () =>{
@@ -51,14 +50,34 @@ console.log(userFinal?.photoURL)
   <div className="navbar-end">
   {
                 userFinal ? <>
-                <h1>{userFinal?.displayName}</h1>
-                <p>{userFinal?.email}</p>
-                <img className='w-12 h-12 mr-1 rounded-full' src={userFinal?.photoURL} alt="https://i.ibb.co/L97LMXw/own-pic.jpg" />
+                {/* <h1>{userFinal?.displayName}</h1>
+                <p>{userFinal?.email}</p> */}
+                <details className="dropdown">
+                  <summary className="m-1 ">
+                  <img className='w-12 h-12 mr-1 rounded-full' src={userFinal?.photoURL} alt="https://i.ibb.co/L97LMXw/own-pic.jpg" />
+                 </summary>
+                  <ul className="p-2 shadow hover:bg-cyan-950 menu dropdown-content z-[1] bg-green-400 rounded-box w-60">
+                    <li><Link to="/dashboard">Dashboard</Link></li>
+                    <li><a>Offer Announcements</a></li>
+                    <li><p>{userFinal?.email}</p></li>
+                    <li><p>{userFinal?.displayName}</p></li>
+
+
+                  </ul>
+                </details>
                 <Link><button onClick={handleClick} className='btn'>Sign out</button></Link>
                 </>
                 
                 : <>
-                <img className='w-12 mr-2 h-12' src="https://i.ibb.co/J50xnVF/user.png" alt="" />
+                <details className="dropdown">
+                  <summary className="m-1 ">
+                    <img className='w-12 mr-2 h-12 rounded-full' src="https://i.ibb.co/j3x2YgT/download-7.png" alt="" />
+                 </summary>
+                  <ul className="p-2 shadow menu dropdown-content z-[1] bg-green-400 rounded-box w-52">
+                    <li><Link to="/dashboard">Dashboard</Link></li>
+                    <li><a>Item 2</a></li>
+                  </ul>
+                </details>
                 <Link to="/login"><button className='btn'>Login</button></Link>
                 </>
 

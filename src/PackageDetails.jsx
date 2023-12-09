@@ -3,6 +3,7 @@ import UseAxiosPublic from "./Hooks/UseAxiosPublic";
 import { useState } from "react";
 import { GoMirror } from "react-icons/go";
 import About from "./OtherRoutes/About";
+import BookingForm from "./BookingForm";
 
 const PackageDetails = () => {
     const   axiosPublic = UseAxiosPublic()
@@ -14,8 +15,9 @@ const PackageDetails = () => {
     const [list,setList] = useState()
     // console.log(details)
 
-    axiosPublic.get(`http://localhost:5000/package/${details}`)
+    axiosPublic.get(`/package/${details}`)
     .then(res=>{
+        console.log(res.data)
       setPic(res.data?.details?.images)
       setAbout(res.data?.details?.about)
       setAccordation(res.data?.details?.plan)
@@ -25,7 +27,7 @@ const PackageDetails = () => {
     })
     return (
         <div>
-            <div className="grid mt-5 md:grid-cols-2 gap-2  mx-auto lg:grid-cols-3">
+            <div  className="grid mt-5 md:grid-cols-2 gap-2  mx-auto lg:grid-cols-3">
                 {
                     pic?.map(single=><div className="" key={single?.id}>
                      <img className="w-full h-48" src={single?.url} alt="" />
@@ -86,21 +88,41 @@ const PackageDetails = () => {
            </div>
 
            <div>
-           <div class="dropdown dropdown-bottom md:mx-96 items-center">
-              <div tabindex="0" role="button" class="btn m-1">Tour-Guide Officer</div>
-              <ul class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                <li className="w-full  "><Link to={`/package/${list?.details?.tour_guide?.name}`}>
-                  <div>
+           <div className="dropdown dropdown-bottom md:mx-96 items-center">
+  <div tabIndex={0} role="button" className="btn m-1">Tour-Guide Officer</div>
+  <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+            <li>
+            <a>
+            <div>
                     <img className="w-24 h-24 rounded-full mx-auto" src={list?.details?.tour_guide?.profile_pic} alt="" />
                     <div className="text-center">
                         <h1 className="font-bold">{list?.details?.tour_guide?.name}</h1>
                         <p>{list?.details?.tour_guide?.education}</p>
                     </div>
                   </div>
+                
+            </a>
+            </li>
+          </ul>
+        </div>
+           {/* <div  className="dropdown dropdown-bottom md:mx-96 items-center">
+              <div  role="button" className="btn m-1">Tour-Guide Officer</div>
+              <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                <li className="w-full  "><Link to={`/package/${list?.details?.tour_guide?.name}`}>
+                  <div>
+                    <img className="w-24 h-24 rounded-full mx-auto" src={list?.details?.tour_guide?.profile_pic} alt="" />
+                    <div className="text-center">
+                        <h1 className="font-bold">Bangla{list?.details?.tour_guide?.name}</h1>
+                        <p>{list?.details?.tour_guide?.education}</p>
+                    </div>
+                  </div>
                 </Link></li>
               </ul>
-            </div>
+            </div> */}
              
+           </div>
+           <div className="mt-7">
+            <BookingForm list={list}></BookingForm>
            </div>
            
             
