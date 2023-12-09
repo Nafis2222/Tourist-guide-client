@@ -1,8 +1,11 @@
-# React + Vite
+# Tourist guide client
+<h> Live Link of this project : 
+https://glittery-sherbet-5bcd9a.netlify.app/
+</h>
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h3>This problematic project features are given below</h3>
+<ul><li>In this project i have used MongoDb(for backend), React, Axios, and Tanstack query  </li>
+<li>This is done with a dynamic way</li>
+</ul>
