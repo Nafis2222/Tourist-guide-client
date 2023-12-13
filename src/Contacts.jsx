@@ -1,34 +1,78 @@
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contacts = () => {
-    return (
-        <div>
-            <p className="text-3xl my-8 border-y-4 border-yellow-300 text-green-600 mx-auto text-center">Contact With Us</p>
-            <div  className="grid grid-cols-2 lg:grid-cols-4">
-                <div className="text-center">
-                   <img className="w-24 mx-auto h-24 rounded-full hover:border-x-purple-700 border-4" src="https://i.ibb.co/gdm0RC0/download-5.png" alt="" />
-                  <h1 className="font-bold my-4 text-2xl">Address</h1>
-                  <p className="text-gray-600">Banani,Dhaka,Bnagladesh</p>
-                </div>
-                <div className="text-center">
-                   <img className="w-24 mx-auto h-24 rounded-full hover:border-y-purple-700 border-4" src="https://i.ibb.co/qdw7X3r/download-6.png" alt="" />
-                  <h1 className="font-bold my-4 text-2xl">Opening Hours</h1>
-                  <p className="text-gray-600">Monday-Friday: 8:00AM – 9:00PM</p> <br />
-                  <p className="text-gray-600">Saturday: 9:00 AM – 6:00 PM</p> <br />
-                  <p className="text-gray-600">Sunday: Close</p> <br />
+    const form = useRef();
 
-                </div>
-                <div className="text-center">
-                   <img className="w-24 mx-auto h-24 rounded-full hover:border-x-purple-700 border-4" src="https://i.ibb.co/tYqnrFn/images-2.png" alt="" />
-                  <h1 className="font-bold my-4 text-2xl">Phone / Cell</h1>
-                  <p className="text-green-600 ">1 34554 / 1 74545</p>
-                </div>
-                <div className="text-center">
-                   <img className="w-24 mx-auto h-24 rounded-full hover:border-y-purple-700 border-4" src="https://i.ibb.co/3rTBC4v/images-3.png" alt="" />
-                  <h1 className="font-bold my-4 text-2xl">Email</h1>
-                  <p className="text-green-600">support@gmail.com</p>
-                </div>
-            </div>
+    const sendEmail = (e) => {
+      e.preventDefault();
+  
+      emailjs.sendForm('service_7o3j1oa', 'template_jye8hos', form.current, 'uj9grwXBmkcFVAqDX')
+        .then((result) => {
+            if(result?.status==200){
+                toast.success("You have successfully messaged admin !", {
+                    position: toast.POSITION.TOP_CENTER
+                  });            }
+            console.log(result);
+        }, (error) => {
+            console.log(error.text);
+        });
+    };
+    return (
+        <div className='bg-purple-300 mt-8  hover:shadow-blue-600 shadow-2xl px-8 py-6'>
+                        <ToastContainer></ToastContainer>
+
+                        <h1 className="text-3xl font-extrabold">Form for Contacking with me </h1>
+
+                <form ref={form} onSubmit={sendEmail}>
+                <div className="md:flex gap-3">
+        <div className="form-control md:w-1/2">
+            <label className="label">
+              <span className="label-text font-semibold">Name</span>
+            </label>
+            <label className="input-group">
+              <input type="text" required placeholder="Enter your name" name="user_name" className="input input-bordered w-full" />
             
+            </label>
+            </div>
+            <div className="form-control md:w-1/2">
+            <label className="label">
+              <span className="label-text font-semibold">Email</span>
+            </label>
+            <label className="input-group">
+              <input required type="email" name="user_email" placeholder="Enter  your email here" className="input input-bordered w-full" />
+            </label>
+            </div>
+        </div>
+        <div className="flex gap-3">
+        <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text font-semibold">Message</span>
+            </label>
+            <label className="input-group">
+              <input type="text" required name="message" placeholder="Enter  message " className="input input-bordered w-full" />
+            </label>
+            </div>
+         
+        </div>
+        <div className="flex gap-3">
+        <div className=" w-full">
+            
+            <button className="w-full btn btn-accent mt-8">Send</button>
+
+            </div>
+         
+        </div>
+      {/* <label>Name</label>
+      <input type="text" name="user_name" />
+      <label>Email</label>
+      <input type="email" name="user_email" />
+      <label>Message</label>
+      <textarea name="message" />
+      <input type="submit" value="Send" /> */}
+    </form>
         </div>
     );
 };
